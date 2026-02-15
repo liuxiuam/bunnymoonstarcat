@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 BUNNYMOONSTARCAT PLANET 💖</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+      color: #333;
+      transition: background-color 0.4s ease;
+    }
+    h2, h3, p {
+      margin: 10px 0;
+    }
+    .screen {
+      display: none;
+      width: 90%;
+      max-width: 420px;
+    }
+    .active {
+      display: block;
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+      outline: none;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      background-color: #ff4f81;
+      color: white;
+    }
+    button:hover {
+      background-color: #ff2a66;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease;
+      text-align: left; 
+    }
+    .main-img {
+      width: 280px;
+      height: auto;
+      margin-bottom: 15px;
+      object-fit: contain;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+    #errorMessage {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 8px;
+    }
+    /* ✨ Texto tipo carta */
+    .card p {
+      text-align: justify;
+      line-height: 1.5;
+      font-size: 0.8em;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Pantalla de contraseña -->
+  <div class="screen active" id="passwordScreen">
+    <img src="https://n9.cl/cgg24" alt="Caja de regalo" class="main-img">
+    <h2>🔒 Ingresa la contraseña</h2>
+    <input type="password" id="passwordInput" placeholder="Escribe la clave...">
+    <br>
+    <button onclick="checkPassword()">Entrar</button>
+    <p id="errorMessage"></p>
+  </div>
+  <div class="screen" id="menuScreen">
+    <h2>💌 Dedicado para ti, mi bunnymoon hermoso 💌</h2>
+    <p>Elige lo que quieres abrir:</p>
+    <div class="btn-container">
+      <button onclick="window.open('https://www.youtube.com/watch?v=0v7NcIMwGpw&list=RD0v7NcIMwGpw&start_radio=')">🎶 Ver video</button>
+      <button onclick="showLetter()">💖 Leer carta</button>
+    </div>
+  </div>
+  <div class="screen" id="letterScreen">
+    <div class="card">
+      <h3>Mi adorado príncipe Bunnymoon,</h3>
+<p> Mi corazón es de usted, quiero que lo sepa, sé que hemos enfrentado toda clase de dificultades, tú y yo, nos hemos amado más, y aún más con cada día, pero, quisiera decirte algo. Mi precioso señor Yu, no es usted simplemente mi amor, mi esposo o mi mejor amigo. Es usted parte entera y completa de mi propio ser, sin usted, nada podría cobrar vida real y genuina en mí, jamás, usted motiva y mueve mi corazón, mi alma, le da un verdadero significado, uno que exista, uno que perdura y se remarca en mis entrañas de forma permanente, dolorosa incluso como el fuego, ¿y sabe por qué dolorosa? Porque jamás en mi vida he experimentado tal cosa como un sentimiento siquiera que pueda perdurar con el tiempo, ni la profundidad que produzca una cicatriz, una señal de que estuvo allí. Pero usted, usted ha redefinido cada fragmento que me compone, no soy yo sin usted, y usted no tiene permitido ser nadie sin mí, ¿lo sabe bien, ¿ahora me entiende? Nosotros hemos creado un pacto con los años, uno no dicho necesariamente con las palabras a viva voz, pero uno que se refuerza como la sangre que nos recorre, y nos da una visión de ella, fugaz, y abrumadora cada vez que nos miramos a los ojos directamente. No hay manera equivalente de poder darle un valor existente que sea cuantificable para describirlo, no lo hay, ni alcanzaría a imaginarlo. Sé que usted me piensa, me ama, quiere que me quede a su lado para siempre, y eso haré, si usted me toma para siempre, déjeme entonces tomarle eternamente, ya sea para el amor, las risas, la tristeza, el tormento, la enfermedad y la ambivalencia, para la crudeza que tenemos los seres vivos por naturaleza, esa que tanto rechazamos, incluso así, tómame, y déjame tomarte, hoy, mañana, 300 años después, 1 siglo, la extinción del mundo que conocemos, y el renacimiento de cada célula, usted, es y siempre debe ser solo mío.</p>
+    <p>Con el ardor, el silencio y el caos que te brinda tu gatito, Nova</p>
+    <p>Nova Len</p>
+      </p>
+      <button onclick="goBack()">🔙 Volver</button>
+    </div>
+  </div>
+  <script>
+    const correctPassword = "meow";
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value.trim();
+      const error = document.getElementById("errorMessage");
+      if (input === correctPassword) {
+        document.getElementById("passwordScreen").classList.remove("active");
+        document.getElementById("menuScreen").classList.add("active");
+        error.textContent = "";
+      } else {
+        error.textContent = "Contraseña incorrecta 💔";
+      }
+    }
+    function showLetter() {
+      document.getElementById("menuScreen").classList.remove("active");
+      document.getElementById("letterScreen").classList.add("active");
+    }
+    function goBack() {
+      document.getElementById("letterScreen").classList.remove("active");
+      document.getElementById("menuScreen").classList.add("active");
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
